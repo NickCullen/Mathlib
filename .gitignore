@@ -1,0 +1,6 @@
+project/
+*.pyc
+__pycache__/
+CmakeLists.txt
+
+*.DS_Store
