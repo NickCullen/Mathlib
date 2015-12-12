@@ -4,10 +4,10 @@
 
 int main(int argc, char** argv)
 {
-	
-	Vector3f d = Vector3f(1,0,1).Normalized();
-	Vector3f v = Vector3f(1,0,0);
-    Vector3f dcv = d.CrossProduct(v);
-    Vector3f cross = d.CrossProduct(dcv);
+	Vector3f vec = Vector3f(1, 1, 1).Normalized();
+
+	Vector3f spherical = Vector3f::CartesianToSpherical(vec);
+	Vector3f cart = Vector3f::SphericalToCartesian(spherical);
+
 	return 0;
 }

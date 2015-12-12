@@ -40,37 +40,44 @@ public:
 	static float DotProduct(const Vector3f& lhs, const Vector3f& rhs);
 
 	// Non-static version of Dot Product
-    float DotProduct(const Vector3f& other);
+    float DotProduct(const Vector3f& other) const;
 
 	// Cross Product
 	static Vector3f CrossProduct(const Vector3f& lhs, const Vector3f& rhs);
 
 	// Non-static version of Cross Product
-    Vector3f CrossProduct(const Vector3f& other);
+    Vector3f CrossProduct(const Vector3f& other) const;
 
 	// Returns the length of the vector
-	float Length();
+	float Length() const;
 
 	// Returns the length squared of the vector (no sqrt)
-	float LengthSquared();
+	float LengthSquared() const;
 
 	// Normalizes this vector and returns it
 	Vector3f& Normalize();
 
 	// Returns the normalized representation of this vector without altering its value
-	Vector3f Normalized();
+	Vector3f Normalized() const;
 
 	// Returns distance between the vectors (uses sqrt)
 	static float Distance(const Vector3f& lhs, const Vector3f& rhs);
 
 	// non-static distance function (uses sqrt)
-	float Distance(const Vector3f& other);
+	float Distance(const Vector3f& other) const;
 
 	// Returns squared distance between the vectors (doesn't use sqrt)
 	static float DistanceSquared(const Vector3f& lhs, const Vector3f& rhs);
 
 	// non-static distance squared function (doesn't use sqrt)
-	float DistanceSquared(const Vector3f& other);
+	float DistanceSquared(const Vector3f& other) const;
+
+	// Converts spherical coordinates to cartesian
+	static Vector3f SphericalToCartesian(const Vector3f& sphericalCoord);
+
+	// Converts Cartesian Coordinates to spherical
+	static Vector3f CartesianToSpherical(const Vector3f& cartesianCoord);
+
 };
 
 

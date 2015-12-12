@@ -69,12 +69,12 @@ Vector3f Vector3f::Divide(const Vector3f& vec, float scalar)
 	return Vector3f(vec.x/scalar, vec.y / scalar, vec.z/scalar);
 }
 
-float Vector3f::Length()
+float Vector3f::Length() const
 {
 	return Mathf::Sqrt(x*x + y*y + z*z);
 }
 
-float Vector3f::LengthSquared()
+float Vector3f::LengthSquared() const
 {
 	return x*x + y*y + z*z;
 }
@@ -88,7 +88,7 @@ Vector3f& Vector3f::Normalize()
 	return *this;
 }
 
-Vector3f Vector3f::Normalized()
+Vector3f Vector3f::Normalized() const
 {
 	float lenRecip = 1.0f / Length();
 	return Vector3f(x*lenRecip, y *lenRecip, z*lenRecip);
@@ -99,7 +99,7 @@ float Vector3f::DotProduct(const Vector3f& lhs, const Vector3f& rhs)
 	return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
 }
 
-float Vector3f::DotProduct(const Vector3f& other)
+float Vector3f::DotProduct(const Vector3f& other) const
 {
 	return Vector3f::DotProduct(*this, other);
 }
@@ -111,7 +111,7 @@ Vector3f Vector3f::CrossProduct(const Vector3f& lhs, const Vector3f& rhs)
 					lhs.x*rhs.y - rhs.x*lhs.y);
 }
 	
-Vector3f Vector3f::CrossProduct(const Vector3f& other)
+Vector3f Vector3f::CrossProduct(const Vector3f& other) const
 {
 	return Vector3f::CrossProduct(*this, other);
 }
@@ -121,7 +121,7 @@ float Vector3f::Distance(const Vector3f& lhs, const Vector3f& rhs)
 	return (lhs - rhs).Length();
 }
 
-float Vector3f::Distance(const Vector3f& other)
+float Vector3f::Distance(const Vector3f& other) const
 {
 	return Vector3f::Distance(*this, other);
 }
@@ -131,7 +131,21 @@ float Vector3f::DistanceSquared(const Vector3f& lhs, const Vector3f& rhs)
 	return (lhs - rhs).LengthSquared();
 }
 
-float Vector3f::DistanceSquared(const Vector3f& other)
+float Vector3f::DistanceSquared(const Vector3f& other) const
 {
 	return Vector3f::DistanceSquared(*this, other);
+}
+
+Vector3f Vector3f::SphericalToCartesian(const Vector3f& s)
+{
+	return Vector3f(s.x * Mathf::Sin(s.y) * Mathf::Cos(s.z),
+					s.x * Mathf::Sin(s.y) * Mathf::Sin(s.z),
+					s.x * Mathf::Cos(s.y));
+}
+
+Vector3f Vector3f::CartesianToSpherical(const Vector3f& v)
+{
+	return Vector3f(v.Length(),														// p
+					Mathf::Atan2(Mathf::Sqrt(v.x*v.x + v.y*v.y), v.z),				// theta
+					Mathf::Atan2(v.y, v.x));										// omega
 }

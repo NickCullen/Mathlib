@@ -40,34 +40,40 @@ public:
 	static float DotProduct(const Vector2f& lhs, const Vector2f& rhs);
 
 	// Non-static version of Dot Product
-    float DotProduct(const Vector2f& other);
+    float DotProduct(const Vector2f& other) const;
 
 	// Returns the length of the vector
-	float Length();
+	float Length() const;
 
 	// Returns the length squared of the vector (no sqrt)
-	float LengthSquared();
+	float LengthSquared() const;
 
 	// Normalizes this vector and returns it
 	Vector2f& Normalize();
 
 	// Returns the normalized representation of this vector without altering its value
-	Vector2f Normalized();
+	Vector2f Normalized() const;
 
 	// Returns distance between the vectors (uses sqrt)
 	static float Distance(const Vector2f& lhs, const Vector2f& rhs);
 
 	// non-static distance function (uses sqrt)
-	float Distance(const Vector2f& other);
+	float Distance(const Vector2f& other) const;
 
 	// Returns squared distance between the vectors (doesn't use sqrt)
 	static float DistanceSquared(const Vector2f& lhs, const Vector2f& rhs);
 
 	// non-static distance squared function (doesn't use sqrt)
-	float DistanceSquared(const Vector2f& other);
+	float DistanceSquared(const Vector2f& other) const;
     
     // Returns the perpendicular vector of this
-    Vector2f Perpendicular();
+    Vector2f Perpendicular() const;
+
+	// Converts polar coordinates (in vector2f form) to cartesian and returns a Vector
+	static Vector2f PolarToCartesian(const Vector2f& polarCoord);
+
+	// Converts cartesian coordinates into polar coordinates and returns a vector
+	static Vector2f CartesianToPolar(const Vector2f& cartesianCoord);
 };
 
 
