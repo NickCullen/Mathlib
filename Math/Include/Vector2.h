@@ -36,7 +36,7 @@ public:
 	static float DotProduct(const Vector2f& lhs, const Vector2f& rhs);
 
 	// Non-static version of Dot Product
-	inline float DotProduct(const Vector2f& other);
+    float DotProduct(const Vector2f& other);
 
 	// Returns the length of the vector
 	float Length();
@@ -54,13 +54,16 @@ public:
 	static float Distance(const Vector2f& lhs, const Vector2f& rhs);
 
 	// non-static distance function (uses sqrt)
-	inline float Distance(const Vector2f& other);
+	float Distance(const Vector2f& other);
 
 	// Returns squared distance between the vectors (doesn't use sqrt)
 	static float DistanceSquared(const Vector2f& lhs, const Vector2f& rhs);
 
 	// non-static distance squared function (doesn't use sqrt)
-	inline float DistanceSquared(const Vector2f& other);
+	float DistanceSquared(const Vector2f& other);
+    
+    // Returns the perpendicular vector of this
+    Vector2f Perpendicular();
 };
 
 

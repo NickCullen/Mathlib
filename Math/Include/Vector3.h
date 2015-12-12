@@ -35,13 +35,13 @@ public:
 	static float DotProduct(const Vector3f& lhs, const Vector3f& rhs);
 
 	// Non-static version of Dot Product
-	inline float DotProduct(const Vector3f& other);
+    float DotProduct(const Vector3f& other);
 
 	// Cross Product
 	static Vector3f CrossProduct(const Vector3f& lhs, const Vector3f& rhs);
 
 	// Non-static version of Cross Product
-	inline Vector3f CrossProduct(const Vector3f& other);
+    Vector3f CrossProduct(const Vector3f& other);
 
 	// Returns the length of the vector
 	float Length();
@@ -59,13 +59,13 @@ public:
 	static float Distance(const Vector3f& lhs, const Vector3f& rhs);
 
 	// non-static distance function (uses sqrt)
-	inline float Distance(const Vector3f& other);
+	float Distance(const Vector3f& other);
 
 	// Returns squared distance between the vectors (doesn't use sqrt)
 	static float DistanceSquared(const Vector3f& lhs, const Vector3f& rhs);
 
 	// non-static distance squared function (doesn't use sqrt)
-	inline float DistanceSquared(const Vector3f& other);
+	float DistanceSquared(const Vector3f& other);
 };
 
 

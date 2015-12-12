@@ -116,3 +116,8 @@ float Vector2f::DistanceSquared(const Vector2f& other)
 {
 	return Vector2f::DistanceSquared(*this, other);
 }
+
+Vector2f Vector2f::Perpendicular()
+{
+    return Vector2f(-y, x);
+}
