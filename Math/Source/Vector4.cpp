@@ -35,6 +35,20 @@ Vector4f::Vector4f(const Vector4f& other)
 	this->w = other.w;
 } 
 
+// Static quick accessors
+Vector4f Vector4f::Up()
+{
+    return Vector4f(0.0f, 1.0f, 0.0f, 1.0f);
+}
+Vector4f Vector4f::Right()
+{
+    return Vector4f(1.0f, 0.0f, 0.0f, 1.0f);
+}
+Vector4f Vector4f::Forward()
+{
+    return Vector4f(0.0f, 0.0f, 1.0f, 1.0f);
+}
+
 // Addition
 Vector4f Vector4f::Add(const Vector4f& lhs, const Vector4f& rhs)
 {

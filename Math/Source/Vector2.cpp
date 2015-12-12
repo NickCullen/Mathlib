@@ -36,6 +36,15 @@ Vector2f::Vector2f(const Vector4f& other)
 	this->y = other.y;
 } 
 
+// Static quick accessors
+Vector2f Vector2f::Up()
+{
+    return Vector2f(0.0f, 1.0f);
+}
+Vector2f Vector2f::Right()
+{
+    return Vector2f(1.0f, 0.0f);
+}
 
 // Addition
 Vector2f Vector2f::Add(const Vector2f& lhs, const Vector2f& rhs)

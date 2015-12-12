@@ -19,7 +19,12 @@ public:
 	Vector4f(float x, float y, float z, float w = 1.0f);
 	Vector4f(const class Vector3f& other);
 	Vector4f(const Vector4f& other);
-
+    
+    // Quick access vectors
+    static Vector4f Up();
+    static Vector4f Right();
+    static Vector4f Forward();
+    
 	// Addition
 	static Vector4f Add(const Vector4f& lhs, const Vector4f& rhs);
 

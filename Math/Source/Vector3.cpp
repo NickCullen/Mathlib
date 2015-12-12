@@ -31,6 +31,19 @@ Vector3f::Vector3f(const class Vector4f& other)
 	this->z = other.z;
 }
 
+// Static quick accessors
+Vector3f Vector3f::Up()
+{
+    return Vector3f(0.0f, 1.0f, 0.0f);
+}
+Vector3f Vector3f::Right()
+{
+    return Vector3f(1.0f, 0.0f, 0.0f);
+}
+Vector3f Vector3f::Forward()
+{
+    return Vector3f(0.0f, 0.0f, 1.0f);
+}
 
 // Addition
 Vector3f Vector3f::Add(const Vector3f& lhs, const Vector3f& rhs)

@@ -18,7 +18,12 @@ public:
 	Vector3f(float x, float y, float z);
 	Vector3f(const Vector3f& other);
 	Vector3f(const class Vector4f& other);
-
+    
+    // Quick access vectors
+    static Vector3f Up();
+    static Vector3f Right();
+    static Vector3f Forward();
+    
 	// Addition
 	static Vector3f Add(const Vector3f& lhs, const Vector3f& rhs);
 

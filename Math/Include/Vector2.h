@@ -19,7 +19,11 @@ public:
 	Vector2f(const Vector2f& other);
 	Vector2f(const class Vector3f& other);
 	Vector2f(const class Vector4f& other);
-
+    
+    // Quick access vectors
+    static Vector2f Up();
+    static Vector2f Right();
+    
 	// Addition
 	static Vector2f Add(const Vector2f& lhs, const Vector2f& rhs);
 
