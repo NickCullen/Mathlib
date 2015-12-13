@@ -4,13 +4,13 @@
 
 int main(int argc, char** argv)
 {
-	Vector3f origin = Vector3f::Zero();
-	Vector3f direction = Vector3f::Forward();
-	Vector3f point = Vector3f(0.0f, 0.0f, -2.0f);
+	Vector3f dir = Vector3f(1.0f, 0.0f, 1.0f);
+	Vector3f pos = Vector3f(0.0f, 0.0f, 10.0f);
+	Plane plane(pos, dir);
 
-	Line line = Line(origin, direction);
+	Vector3f point(100, 100, 10);
 
-	bool b = line.IsPointOnLine(point);
+	bool b = plane.IsPointOnPlane(point);
 
 	return 0;
 }
