@@ -24,7 +24,11 @@ public:
     static Vector4f Up();
     static Vector4f Right();
     static Vector4f Forward();
-    
+	static Vector4f Zero();
+
+	// Returns true if vector is zero
+	bool IsZero() const;
+
 	// Addition
 	static Vector4f Add(const Vector4f& lhs, const Vector4f& rhs);
 

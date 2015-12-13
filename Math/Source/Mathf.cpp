@@ -1,6 +1,25 @@
 #include "MathLib.h"
 #include <math.h>
 
+const float Mathf::Pi = 3.141592653f;
+const float Mathf::Epsilon = 1.0e-6f;
+
+
+bool Mathf::IsZero(float val)
+{
+	return (fabsf(val) < Mathf::Epsilon);
+}
+
+bool Mathf::CompareFloats(float f1, float f2)
+{
+	return Mathf::IsZero(Mathf::Abs(f1 - f2));
+}
+
+float Mathf::Abs(float input)
+{
+	return fabsf(input);
+}
+
 float Mathf::Sqrt(float val)
 {
 	return sqrtf(val);

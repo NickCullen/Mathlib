@@ -48,6 +48,16 @@ Vector4f Vector4f::Forward()
 {
     return Vector4f(0.0f, 0.0f, 1.0f, 1.0f);
 }
+Vector4f Vector4f::Zero()
+{
+	return Vector4f(0.0f, 0.0f, 0.0f, 0.0f);
+}
+
+// Returns true if vector is zero
+bool Vector4f::IsZero() const
+{
+	return (Mathf::IsZero(x) & Mathf::IsZero(y) & Mathf::IsZero(z) * Mathf::IsZero(w));
+}
 
 // Addition
 Vector4f Vector4f::Add(const Vector4f& lhs, const Vector4f& rhs)

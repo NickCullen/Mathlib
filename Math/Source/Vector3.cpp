@@ -44,6 +44,16 @@ Vector3f Vector3f::Forward()
 {
     return Vector3f(0.0f, 0.0f, 1.0f);
 }
+Vector3f Vector3f::Zero()
+{
+	return Vector3f(0.0f, 0.0f, 0.0f);
+}
+
+// Returns true if vector is zero
+bool Vector3f::IsZero() const
+{
+	return (Mathf::IsZero(x) & Mathf::IsZero(y) & Mathf::IsZero(z));
+}
 
 // Addition
 Vector3f Vector3f::Add(const Vector3f& lhs, const Vector3f& rhs)

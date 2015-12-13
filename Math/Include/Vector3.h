@@ -23,7 +23,11 @@ public:
     static Vector3f Up();
     static Vector3f Right();
     static Vector3f Forward();
-    
+	static Vector3f Zero();
+
+	// Returns true if vector is zero
+	bool IsZero() const;
+
 	// Addition
 	static Vector3f Add(const Vector3f& lhs, const Vector3f& rhs);
 
@@ -77,6 +81,7 @@ public:
 
 	// Converts Cartesian Coordinates to spherical
 	static Vector3f CartesianToSpherical(const Vector3f& cartesianCoord);
+
 
 };
 

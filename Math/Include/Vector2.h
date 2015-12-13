@@ -23,6 +23,11 @@ public:
     // Quick access vectors
     static Vector2f Up();
     static Vector2f Right();
+	static Vector2f Zero();
+
+	// Return is zero vector
+	bool IsZero() const;
+
     
 	// Addition
 	static Vector2f Add(const Vector2f& lhs, const Vector2f& rhs);

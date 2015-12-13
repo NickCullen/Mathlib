@@ -45,6 +45,16 @@ Vector2f Vector2f::Right()
 {
     return Vector2f(1.0f, 0.0f);
 }
+Vector2f Vector2f::Zero()
+{
+	return Vector2f(0.0f, 0.0f);
+}
+
+// Return is zero vector
+bool Vector2f::IsZero() const
+{
+	return (Mathf::IsZero(x) & Mathf::IsZero(y));
+}
 
 // Addition
 Vector2f Vector2f::Add(const Vector2f& lhs, const Vector2f& rhs)

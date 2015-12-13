@@ -4,10 +4,13 @@
 
 int main(int argc, char** argv)
 {
-	Vector3f vec = Vector3f(1, 1, 1).Normalized();
+	Vector3f origin = Vector3f::Zero();
+	Vector3f direction = Vector3f::Forward();
+	Vector3f point = Vector3f(0.0f, 0.0f, -2.0f);
 
-	Vector3f spherical = Vector3f::CartesianToSpherical(vec);
-	Vector3f cart = Vector3f::SphericalToCartesian(spherical);
+	Line line = Line(origin, direction);
+
+	bool b = line.IsPointOnLine(point);
 
 	return 0;
 }
