@@ -69,3 +69,21 @@ bool Plane::TestCoplanar4Points(const Vector3f& p0,const Vector3f& p1,const Vect
     return Mathf::IsZero(v0.DotProduct(v1.CrossProduct(v2)));
     
 }
+
+PlaneTestResult Plane::PointInTriangle(const Vector3f& p0,const Vector3f& p1,const Vector3f& p2,const Vector3f& point)
+{
+    // Vectors of the triangle
+    Vector3f v0 = p1 - p0;
+    Vector3f v1 = p2 - p1;
+    Vector3f v2 = p0 - p2;
+    
+    // normal of the triangle
+    Vector3f n = v0.CrossProduct(v1);
+    
+    // Vectors from triangle points to test point
+    Vector3f w0 = point - p0;
+    Vector3f w1 = point - p1;
+    Vector3f w2 = point - p2;
+    
+    if (
+}

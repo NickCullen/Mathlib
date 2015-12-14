@@ -41,6 +41,9 @@ public:
     
     // Checks to see if the four points are co planar
     static bool TestCoplanar4Points(const class Vector3f& p0,const class Vector3f& p1,const class Vector3f& p2,const class Vector3f& p3);
+
+    // Checks wether a point is in the given triangle vertices
+    static PlaneTestResult PointInTriangle(const class Vector3f& p0,const class Vector3f& p1,const class Vector3f& p2,const class Vector3f& point);
 };
 
 #endif
