@@ -29,6 +29,12 @@ public:
 	// Non-static version
 	bool IsPointOnLine(const class Vector2f& point) const;
 	bool IsPointOnLine(const class Vector3f& point) const;
+    
+    // Checks to see if the three points are collinear (in a straight line)
+    static bool TestCollinear3Points(const class Vector3f& p0,const class Vector3f& p1,const class Vector3f& p2);
+    
+    // Checks to see if the four points are collinear (in a straight line)
+    static bool TestCollinear4Points(const class Vector3f& p0,const class Vector3f& p1,const class Vector3f& p2,const class Vector3f& p3);
 };
 
 #endif

@@ -39,7 +39,8 @@ public:
     // Returns the relevant enum to check wether a point is inside/outside/on the plane
     PlaneTestResult TestPoint(const class Vector3f& point) const;
     
-
+    // Checks to see if the four points are co planar
+    static bool TestCoplanar4Points(const class Vector3f& p0,const class Vector3f& p1,const class Vector3f& p2,const class Vector3f& p3);
 };
 
 #endif

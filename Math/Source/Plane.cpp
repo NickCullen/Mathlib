@@ -60,3 +60,12 @@ PlaneTestResult Plane::TestPoint(const Vector3f& point) const
     else
         return Outside;
 }
+bool Plane::TestCoplanar4Points(const Vector3f& p0,const Vector3f& p1,const Vector3f& p2,const Vector3f& p3)
+{
+    Vector3f v0 = p1 - p0;
+    Vector3f v1 = p2 - p0;
+    Vector3f v2 = p3 - p0;
+
+    return Mathf::IsZero(v0.DotProduct(v1.CrossProduct(v2)));
+    
+}
