@@ -85,5 +85,5 @@ PlaneTestResult Plane::PointInTriangle(const Vector3f& p0,const Vector3f& p1,con
     Vector3f w1 = point - p1;
     Vector3f w2 = point - p2;
     
-    if (
+    return Inside;
 }
