@@ -25,7 +25,7 @@ Vector4f::Vector4f(const Vector3f& other)
 	this->x = other.x;
 	this->y = other.y;
 	this->z = other.z;
-	this->w = 1.0f;
+	this->w = 0.0f;
 }
 Vector4f::Vector4f(const Vector4f& other)
 {
@@ -38,15 +38,15 @@ Vector4f::Vector4f(const Vector4f& other)
 // Static quick accessors
 Vector4f Vector4f::Up()
 {
-    return Vector4f(0.0f, 1.0f, 0.0f, 1.0f);
+    return Vector4f(0.0f, 1.0f, 0.0f, 0.0f);
 }
 Vector4f Vector4f::Right()
 {
-    return Vector4f(1.0f, 0.0f, 0.0f, 1.0f);
+    return Vector4f(1.0f, 0.0f, 0.0f, 0.0f);
 }
 Vector4f Vector4f::Forward()
 {
-    return Vector4f(0.0f, 0.0f, 1.0f, 1.0f);
+    return Vector4f(0.0f, 0.0f, 1.0f, 0.0f);
 }
 Vector4f Vector4f::Zero()
 {
