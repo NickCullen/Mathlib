@@ -94,3 +94,19 @@ PlaneTestResult Plane::PointInTriangle(const Vector3f& p0,const Vector3f& p1,con
     // If we reach here then we are iside the triangle
     return Inside;
 }
+
+Vector3f Plane::BarycentricCoordinates(const Vector3f& p0, const Vector3f& p1, const Vector3f& p2, const Vector3f& point)
+{
+    if (Plane::PointInTriangle(p0, p1, p2, point) == Inside)
+    {
+        Vector3f u = p1 - p0;
+        Vector3f v = p2 - p0;
+        Vector3f w = point - p0;
+        
+        return Vector3f(0.5f * u.CrossProduct(w).Length(),
+                        0.5f * v.CrossProduct(w).Length(),
+                        0.5f * u.CrossProduct(v).Length());
+    }
+    
+    return Vector3f::Zero();
+}

@@ -44,6 +44,9 @@ public:
 
     // Checks wether a point is in the given triangle vertices
     static PlaneTestResult PointInTriangle(const class Vector3f& p0,const class Vector3f& p1,const class Vector3f& p2,const class Vector3f& point);
+    
+    // Returns the barrycentric coordinates of the point in relation to the three vertices
+    static class Vector3f BarycentricCoordinates(const class Vector3f& p0,const class Vector3f& p1,const class Vector3f& p2,const class Vector3f& point);
 };
 
 #endif
