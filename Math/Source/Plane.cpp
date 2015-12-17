@@ -85,5 +85,12 @@ PlaneTestResult Plane::PointInTriangle(const Vector3f& p0,const Vector3f& p1,con
     Vector3f w1 = point - p1;
     Vector3f w2 = point - p2;
     
+    // Test dot product if it is less than 0 then it is outside
+    if (v0.CrossProduct(w0).DotProduct(n) < 0 ||
+        v1.CrossProduct(w1).DotProduct(n) < 0 ||
+        v2.CrossProduct(w2).DotProduct(n) < 0)
+        return Outside;
+    
+    // If we reach here then we are iside the triangle
     return Inside;
 }
