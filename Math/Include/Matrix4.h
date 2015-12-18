@@ -41,6 +41,12 @@ public:
     // Returns identity matrix
     static Matrix4f Identity();
     
+    // Returns the diagonal of the matrix in vector form
+    class Vector4f GetDiagonal() const;
+    
+    // Returns the sum of the diagonal
+    float GetTrace() const;
+    
     // Assignment operator
     Matrix4f& operator=(const Matrix4f& rhs);
     

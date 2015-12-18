@@ -67,3 +67,13 @@ Matrix2f& Matrix2f::operator=(const Matrix2f& rhs)
     m[1] = rhs.m[1]; m[3] = rhs.m[3];
     return *this;
 }
+
+Vector2f Matrix2f::GetDiagonal() const
+{
+    return Vector2f(m[E0], m[E3]);
+}
+
+float Matrix2f::GetTrace() const
+{
+    return m[E0] + m[E3];
+}

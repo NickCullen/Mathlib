@@ -82,3 +82,13 @@ Matrix3f& Matrix3f::operator=(const Matrix3f& rhs)
     
     return *this;
 }
+
+Vector3f Matrix3f::GetDiagonal() const
+{
+    return Vector3f(m[E0], m[E4], m[E8]);
+}
+
+float Matrix3f::GetTrace() const
+{
+    return m[E0] + m[E4] + m[E8];
+}

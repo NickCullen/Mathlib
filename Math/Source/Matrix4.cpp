@@ -110,3 +110,13 @@ Matrix4f& Matrix4f::operator=(const Matrix4f& rhs)
     
     return *this;
 }
+
+Vector4f Matrix4f::GetDiagonal() const
+{
+    return Vector4f(m[E0], m[E5], m[E10], m[E15]);
+}
+
+float Matrix4f::GetTrace() const
+{
+    return m[E0] + m[E5] + m[E10] + m[E15];
+}
