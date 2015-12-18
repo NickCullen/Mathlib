@@ -73,6 +73,18 @@ Matrix2f Matrix2f::Add(const Matrix2f& l, const Matrix2f& r)
     return m;
 }
 
+Matrix2f Matrix2f::Subtract(const Matrix2f& l, const Matrix2f& r)
+{
+    Matrix2f m;
+    
+    m.m[E0] = l.m[E0] - r.m[E0];
+    m.m[E1] = l.m[E1] - r.m[E1];
+    m.m[E2] = l.m[E2] - r.m[E2];
+    m.m[E3] = l.m[E3] - r.m[E3];
+    
+    return m;
+}
+
 
 Matrix2f& Matrix2f::operator=(const Matrix2f& rhs)
 {
@@ -80,12 +92,6 @@ Matrix2f& Matrix2f::operator=(const Matrix2f& rhs)
     m[1] = rhs.m[1]; m[3] = rhs.m[3];
     return *this;
 }
-
-Matrix2f Matrix2f::operator+(const Matrix2f& other)
-{
-    return Matrix2f::Add(*this, other);
-}
-
 
 Vector2f Matrix2f::GetDiagonal() const
 {

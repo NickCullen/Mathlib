@@ -44,11 +44,11 @@ public:
     // Assignment operator
     Matrix2f& operator=(const Matrix2f& rhs);
     
-    // Addition operator
-    Matrix2f operator+(const Matrix2f& other);
-    
     // Adition function
     static Matrix2f Add(const Matrix2f& lhs, const Matrix2f& rhs);
+    
+    // Subtraction function
+    static Matrix2f Subtract(const Matrix2f& lhs, const Matrix2f& rhs);
     
     // Returns the diagonal of the matrix in vector form
     class Vector2f GetDiagonal() const;
@@ -58,5 +58,10 @@ public:
     
 };
 
+// Addition Operator
+inline MATH_API Matrix2f operator+(const Matrix2f& lhs, const Matrix2f& rhs) { return Matrix2f::Add(lhs, rhs); }
+
+// Subtraction Operator
+inline MATH_API Matrix2f operator-(const Matrix2f& lhs, const Matrix2f& rhs) { return Matrix2f::Subtract(lhs, rhs); }
 
 #endif

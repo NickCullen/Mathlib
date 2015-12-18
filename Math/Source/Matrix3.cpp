@@ -91,6 +91,24 @@ Matrix3f Matrix3f::Add(const Matrix3f& l, const Matrix3f& r)
     return m;
 }
 
+Matrix3f Matrix3f::Subtract(const Matrix3f& l, const Matrix3f& r)
+{
+    Matrix3f m;
+    
+    m.m[E0] = l.m[E0] - r.m[E0];
+    m.m[E1] = l.m[E1] - r.m[E1];
+    m.m[E2] = l.m[E2] - r.m[E2];
+    m.m[E3] = l.m[E3] - r.m[E3];
+    m.m[E4] = l.m[E4] - r.m[E4];
+    m.m[E5] = l.m[E5] - r.m[E5];
+    m.m[E6] = l.m[E6] - r.m[E6];
+    m.m[E7] = l.m[E7] - r.m[E7];
+    m.m[E8] = l.m[E8] - r.m[E8];
+    
+    return m;
+}
+
+
 
 Matrix3f& Matrix3f::operator=(const Matrix3f& rhs)
 {
@@ -101,10 +119,6 @@ Matrix3f& Matrix3f::operator=(const Matrix3f& rhs)
     return *this;
 }
 
-Matrix3f Matrix3f::operator+(const Matrix3f& other)
-{
-    return Matrix3f::Add(*this, other);
-}
 
 Vector3f Matrix3f::GetDiagonal() const
 {
