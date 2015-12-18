@@ -149,6 +149,30 @@ Matrix4f Matrix4f::Subtract(const Matrix4f& l, const Matrix4f& r)
     return m;
 }
 
+Matrix4f Matrix4f::Multiply(const Matrix4f& l, const float r)
+{
+    Matrix4f m;
+    
+    m.m[E0] = l.m[E0] * r;
+    m.m[E1] = l.m[E1] * r;
+    m.m[E2] = l.m[E2] * r;
+    m.m[E3] = l.m[E3] * r;
+    m.m[E4] = l.m[E4] * r;
+    m.m[E5] = l.m[E5] * r;
+    m.m[E6] = l.m[E6] * r;
+    m.m[E7] = l.m[E7] * r;
+    m.m[E8] = l.m[E8] * r;
+    m.m[E9] = l.m[E9] * r;
+    m.m[E10] = l.m[E10] * r;
+    m.m[E11] = l.m[E11] * r;
+    m.m[E12] = l.m[E12] * r;
+    m.m[E13] = l.m[E13] * r;
+    m.m[E14] = l.m[E14] * r;
+    m.m[E15] = l.m[E15] * r;
+    
+    return m;
+}
+
 Matrix4f& Matrix4f::operator=(const Matrix4f& rhs)
 {
     m[0] = rhs.m[0]; m[4] = rhs.m[4]; m[8] = rhs.m[8]; m[12] = rhs.m[12];

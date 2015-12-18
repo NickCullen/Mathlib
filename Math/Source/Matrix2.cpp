@@ -85,6 +85,17 @@ Matrix2f Matrix2f::Subtract(const Matrix2f& l, const Matrix2f& r)
     return m;
 }
 
+Matrix2f Matrix2f::Multiply(const Matrix2f &l, const float r)
+{
+    Matrix2f m;
+    
+    m.m[E0] = l.m[E0] * r;
+    m.m[E1] = l.m[E1] * r;
+    m.m[E2] = l.m[E2] * r;
+    m.m[E3] = l.m[E3] * r;
+    
+    return m;
+}
 
 Matrix2f& Matrix2f::operator=(const Matrix2f& rhs)
 {

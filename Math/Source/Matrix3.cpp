@@ -108,7 +108,22 @@ Matrix3f Matrix3f::Subtract(const Matrix3f& l, const Matrix3f& r)
     return m;
 }
 
-
+Matrix3f Matrix3f::Multiply(const Matrix3f& l, const float r)
+{
+    Matrix3f m;
+    
+    m.m[E0] = l.m[E0] * r;
+    m.m[E1] = l.m[E1] * r;
+    m.m[E2] = l.m[E2] * r;
+    m.m[E3] = l.m[E3] * r;
+    m.m[E4] = l.m[E4] * r;
+    m.m[E5] = l.m[E5] * r;
+    m.m[E6] = l.m[E6] * r;
+    m.m[E7] = l.m[E7] * r;
+    m.m[E8] = l.m[E8] * r;
+    
+    return m;
+}
 
 Matrix3f& Matrix3f::operator=(const Matrix3f& rhs)
 {

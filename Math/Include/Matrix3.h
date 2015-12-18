@@ -50,6 +50,9 @@ public:
     // Subtraction function
     static Matrix3f Subtract(const Matrix3f& lhs, const Matrix3f& rhs);
     
+    // Multiply Functions
+    static Matrix3f Multiply(const Matrix3f& lhs, const float rhs);
+    
     // Returns the diagonal of the matrix in vector form
     class Vector3f GetDiagonal() const;
     
@@ -64,5 +67,9 @@ inline MATH_API Matrix3f operator+(const Matrix3f& lhs, const Matrix3f& rhs) { r
 
 // Subtraction Operator
 inline MATH_API Matrix3f operator-(const Matrix3f& lhs, const Matrix3f& rhs) { return Matrix3f::Subtract(lhs, rhs); }
+
+// Multiplication operators
+inline MATH_API Matrix3f operator*(const Matrix3f& lhs, const float rhs) { return Matrix3f::Multiply(lhs, rhs); }
+inline MATH_API Matrix3f operator*(const float lhs, const Matrix3f& rhs) { return Matrix3f::Multiply(rhs, lhs); }
 
 #endif

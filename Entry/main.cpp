@@ -16,5 +16,11 @@ int main(int argc, char** argv)
     Matrix4f m4a = m4 + m4;
     Matrix4f m4s = m4 - m4;
     
-    
+    Matrix2f m2Scale = m2 * 5.0f;
+    Matrix2f m2PreScale = 10.0f * m2;
+    Matrix3f m3Scale = m3 * 5.0f;
+    Matrix3f m3PreScale = 10.0f * m3;
+    Matrix4f m4Scale = m4 * 5.0f;
+    Matrix4f m4PreScale = 10.0f * m4;
+
 }

@@ -50,6 +50,9 @@ public:
     // Subtraction function
     static Matrix2f Subtract(const Matrix2f& lhs, const Matrix2f& rhs);
     
+    // Multiply functions
+    static Matrix2f Multiply(const Matrix2f& lhs, const float rhs);
+    
     // Returns the diagonal of the matrix in vector form
     class Vector2f GetDiagonal() const;
     
@@ -63,5 +66,9 @@ inline MATH_API Matrix2f operator+(const Matrix2f& lhs, const Matrix2f& rhs) { r
 
 // Subtraction Operator
 inline MATH_API Matrix2f operator-(const Matrix2f& lhs, const Matrix2f& rhs) { return Matrix2f::Subtract(lhs, rhs); }
+
+// Multiplication operators
+inline MATH_API Matrix2f operator*(const Matrix2f& lhs, const float rhs) { return Matrix2f::Multiply(lhs, rhs); }
+inline MATH_API Matrix2f operator*(const float lhs, const Matrix2f& rhs) { return Matrix2f::Multiply(rhs, lhs); }
 
 #endif
