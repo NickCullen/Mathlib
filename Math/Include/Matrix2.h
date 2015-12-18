@@ -41,14 +41,20 @@ public:
     // Returns identity matrix
     static Matrix2f Identity();
     
+    // Assignment operator
+    Matrix2f& operator=(const Matrix2f& rhs);
+    
+    // Addition operator
+    Matrix2f operator+(const Matrix2f& other);
+    
+    // Adition function
+    static Matrix2f Add(const Matrix2f& lhs, const Matrix2f& rhs);
+    
     // Returns the diagonal of the matrix in vector form
     class Vector2f GetDiagonal() const;
     
     // Returns the sum of the diagonal
     float GetTrace() const;
-    
-    // Assignment operator
-    Matrix2f& operator=(const Matrix2f& rhs);
     
 };
 
