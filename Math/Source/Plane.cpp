@@ -95,7 +95,7 @@ PlaneTestResult Plane::PointInTriangle(const Vector3f& p0,const Vector3f& p1,con
     return Inside;
 }
 
-Vector3f Plane::BarycentricCoordinates(const Vector3f& p0, const Vector3f& p1, const Vector3f& p2, const Vector3f& point)
+Vector2f Plane::BarycentricCoordinates(const Vector3f& p0, const Vector3f& p1, const Vector3f& p2, const Vector3f& point)
 {
     if (Plane::PointInTriangle(p0, p1, p2, point) == Inside)
     {
@@ -103,10 +103,22 @@ Vector3f Plane::BarycentricCoordinates(const Vector3f& p0, const Vector3f& p1, c
         Vector3f v = p2 - p0;
         Vector3f w = point - p0;
         
-        return Vector3f(0.5f * u.CrossProduct(w).Length(),
-                        0.5f * v.CrossProduct(w).Length(),
-                        0.5f * u.CrossProduct(v).Length());
+        float a = 0.5f * u.CrossProduct(w).Length();
+        float b = 0.5f * v.CrossProduct(w).Length();
+        float c = 0.5f * u.CrossProduct(v).Length();
+        
+        return Vector2f(b/c,a/c);
     }
     
-    return Vector3f::Zero();
+    return Vector2f::Zero();
+}
+
+Vector3f Plane::BarycentricCoordToPoint(const Vector3f& p0, const Vector3f& p1, const Vector3f& p2, const float s, const float t)
+{
+    return p0 + (s * (p1 - p0)) + (t * (p2 - p0));
+}
+
+Vector3f Plane::BarycentricCoordToPoint(const Vector3f& p0, const Vector3f& p1, const Vector3f& p2, const Vector2f& barCoord)
+{
+    return Plane::BarycentricCoordToPoint(p0, p1, p2, barCoord.x, barCoord.y);
 }

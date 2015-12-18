@@ -46,7 +46,13 @@ public:
     static PlaneTestResult PointInTriangle(const class Vector3f& p0,const class Vector3f& p1,const class Vector3f& p2,const class Vector3f& point);
     
     // Returns the barrycentric coordinates of the point in relation to the three vertices
-    static class Vector3f BarycentricCoordinates(const class Vector3f& p0,const class Vector3f& p1,const class Vector3f& p2,const class Vector3f& point);
+    static class Vector2f BarycentricCoordinates(const class Vector3f& p0,const class Vector3f& p1,const class Vector3f& p2,const class Vector3f& point);
+    
+    // Returns the point using barycentric coordinates of the three points that make up the triangle
+    static class Vector3f BarycentricCoordToPoint(const class Vector3f& p0, const class Vector3f& p1, const class Vector3f& p2, const float s, const float t);
+    
+    // Returns the point using barycentric coordinates of the three points that make up the triangle
+    static class Vector3f BarycentricCoordToPoint(const class Vector3f& p0, const class Vector3f& p1, const class Vector3f& p2, const class Vector2f& barCoord);
 };
 
 #endif
