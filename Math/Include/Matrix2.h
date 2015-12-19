@@ -18,28 +18,11 @@ public:
     // Prints the matrix
     void Print() const;
     
-    // Getters for elements
-    inline float GetElement(int row, int col) const
-    {
-        #ifdef ROWMAJOR
-        return m[row * 2 + col];
-        #else
-        return m[col * 2 + row];
-        #endif
-    }
-    
-    // Setters for elements
-    inline void SetElement(int row, int col, float val)
-    {
-        #ifdef ROWMAJOR
-        m[row * 2 + col] = val;
-        #else
-        m[col * 2 + row] = val;
-        #endif
-    }
-    
     // Returns identity matrix
     static Matrix2f Identity();
+    
+    // Access operator
+    float& operator()(unsigned int row, unsigned int col);
     
     // Assignment operator
     Matrix2f& operator=(const Matrix2f& rhs);

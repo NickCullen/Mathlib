@@ -125,6 +125,15 @@ Matrix3f Matrix3f::Multiply(const Matrix3f& l, const float r)
     return m;
 }
 
+float& Matrix3f::operator()(unsigned int row, unsigned int col)
+{
+#ifdef ROWMAJOR
+    return m[row * 3 + col];
+#else
+    return m[col * 3 + row];
+#endif
+}
+
 Matrix3f& Matrix3f::operator=(const Matrix3f& rhs)
 {
     m[0] = rhs.m[0]; m[3] = rhs.m[3]; m[6] = rhs.m[6];

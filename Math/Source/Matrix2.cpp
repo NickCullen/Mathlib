@@ -97,6 +97,16 @@ Matrix2f Matrix2f::Multiply(const Matrix2f &l, const float r)
     return m;
 }
 
+// Access operator
+float& Matrix2f::operator()(unsigned int row, unsigned int col)
+{
+#ifdef ROWMAJOR
+    return m[row * 2 + col];
+#else
+    return m[col * 2 + row];
+#endif
+}
+
 Matrix2f& Matrix2f::operator=(const Matrix2f& rhs)
 {
     m[0] = rhs.m[0]; m[2] = rhs.m[2];

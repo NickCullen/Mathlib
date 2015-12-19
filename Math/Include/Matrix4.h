@@ -18,28 +18,11 @@ public:
     // Prints the matrix
     void Print() const;
     
-    // Getters for elements
-    inline float GetElement(int row, int col) const
-    {
-        #ifdef ROWMAJOR
-        return m[row * 4 + col];
-        #else
-        return m[col * 4 + row];
-        #endif
-    }
-    
-    // Setters for elements
-    inline void SetElement(int row, int col, float val)
-    {
-        #ifdef ROWMAJOR
-        m[row * 4 + col] = val;
-        #else
-        m[col * 4 + row] = val;
-        #endif
-    }
-    
     // Returns identity matrix
     static Matrix4f Identity();
+    
+    // Access operator
+    float& operator()(unsigned int row, unsigned int col);
     
     // Assignment operator
     Matrix4f& operator=(const Matrix4f& rhs);

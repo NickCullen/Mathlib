@@ -18,28 +18,11 @@ public:
     // Prints the matrix
     void Print() const;
     
-    // Getters for elements
-    inline float GetElement(int row, int col) const
-    {
-        #ifdef ROWMAJOR
-        return m[row * 3 + col];
-        #else
-        return m[col * 3 + row];
-        #endif
-    }
-    
-    // Setters for elements
-    inline void SetElement(int row, int col, float val)
-    {
-        #ifdef ROWMAJOR
-        m[row * 3 + col] = val;
-        #else
-        m[col * 3 + row] = val;
-        #endif
-    }
-    
     // Returns identity matrix
     static Matrix3f Identity();
+    
+    // Access operator
+    float& operator()(unsigned int row, unsigned int col);
     
     // Assignment operator
     Matrix3f& operator=(const Matrix3f& rhs);

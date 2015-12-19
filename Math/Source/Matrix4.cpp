@@ -173,6 +173,16 @@ Matrix4f Matrix4f::Multiply(const Matrix4f& l, const float r)
     return m;
 }
 
+float& Matrix4f::operator()(unsigned int row, unsigned int col)
+{
+#ifdef ROWMAJOR
+    return m[row * 4 + col];
+#else
+    return m[col * 4 + row];
+#endif
+}
+
+
 Matrix4f& Matrix4f::operator=(const Matrix4f& rhs)
 {
     m[0] = rhs.m[0]; m[4] = rhs.m[4]; m[8] = rhs.m[8]; m[12] = rhs.m[12];
