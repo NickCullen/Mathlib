@@ -35,6 +35,8 @@ public:
     
     // Multiply Functions
     static Matrix3f Multiply(const Matrix3f& lhs, const float rhs);
+    static Matrix3f Multiply(const Matrix3f& lhs, const Matrix3f& rhs);
+    static class Vector3f Multiply(const Matrix3f& lhs, const class Vector3f& rhs);
     
     // Returns the diagonal of the matrix in vector form
     class Vector3f GetDiagonal() const;
@@ -54,5 +56,7 @@ inline MATH_API Matrix3f operator-(const Matrix3f& lhs, const Matrix3f& rhs) { r
 // Multiplication operators
 inline MATH_API Matrix3f operator*(const Matrix3f& lhs, const float rhs) { return Matrix3f::Multiply(lhs, rhs); }
 inline MATH_API Matrix3f operator*(const float lhs, const Matrix3f& rhs) { return Matrix3f::Multiply(rhs, lhs); }
+inline MATH_API Matrix3f operator*(const Matrix3f& lhs, const Matrix3f& rhs) { return Matrix3f::Multiply(lhs, rhs); }
+inline MATH_API Vector3f operator*(const Matrix3f& lhs, const class Vector3f& rhs) { return Matrix3f::Multiply(lhs, rhs); }
 
 #endif

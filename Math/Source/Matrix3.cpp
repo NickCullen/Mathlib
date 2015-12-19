@@ -125,6 +125,37 @@ Matrix3f Matrix3f::Multiply(const Matrix3f& l, const float r)
     return m;
 }
 
+// Matrix Row * Vector Column
+Vector3f Matrix3f::Multiply(const Matrix3f& l, const Vector3f& r)
+{
+    Vector3f ret;
+    
+    ret.x = l.m[E0]*r.x + l.m[E3]*r.y + l.m[E6]*r.z;
+    ret.y = l.m[E1]*r.x + l.m[E4]*r.y + l.m[E7]*r.z;
+    ret.z = l.m[E2]*r.x + l.m[E5]*r.y + l.m[E8]*r.z;
+    
+    return ret;
+}
+// Matrix Row * Matrix Column
+Matrix3f Matrix3f::Multiply(const Matrix3f& l, const Matrix3f& r)
+{
+    Matrix3f ret;
+    
+    ret.m[E0] = l.m[E0]*r.m[E0] + l.m[E3]*r.m[E1] + l.m[E6]*r.m[E2];
+    ret.m[E1] = l.m[E1]*r.m[E0] + l.m[E4]*r.m[E1] + l.m[E7]*r.m[E2];
+    ret.m[E2] = l.m[E2]*r.m[E0] + l.m[E5]*r.m[E1] + l.m[E8]*r.m[E2];
+                                              
+    ret.m[E3] = l.m[E0]*r.m[E3] + l.m[E3]*r.m[E4] + l.m[E6]*r.m[E5];
+    ret.m[E4] = l.m[E1]*r.m[E3] + l.m[E4]*r.m[E4] + l.m[E7]*r.m[E5];
+    ret.m[E5] = l.m[E2]*r.m[E3] + l.m[E5]*r.m[E4] + l.m[E8]*r.m[E5];
+    
+    ret.m[E6] = l.m[E0]*r.m[E6] + l.m[E3]*r.m[E7] + l.m[E6]*r.m[E8];
+    ret.m[E7] = l.m[E1]*r.m[E6] + l.m[E4]*r.m[E7] + l.m[E7]*r.m[E8];
+    ret.m[E8] = l.m[E2]*r.m[E6] + l.m[E5]*r.m[E7] + l.m[E8]*r.m[E8];
+    
+    return ret;
+}
+
 float& Matrix3f::operator()(unsigned int row, unsigned int col)
 {
 #ifdef ROWMAJOR

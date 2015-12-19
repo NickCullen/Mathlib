@@ -35,6 +35,8 @@ public:
     
     // Multiply Functions
     static Matrix4f Multiply(const Matrix4f& lhs, const float rhs);
+    static Matrix4f Multiply(const Matrix4f& lhs, const Matrix4f& rhs);
+    static class Vector4f Multiply(const Matrix4f& lhs, const class Vector4f& rhs);
     
     // Returns the diagonal of the matrix in vector form
     class Vector4f GetDiagonal() const;
@@ -53,4 +55,7 @@ inline MATH_API Matrix4f operator-(const Matrix4f& lhs, const Matrix4f& rhs) { r
 // Multiplication operators
 inline MATH_API Matrix4f operator*(const Matrix4f& lhs, const float rhs) { return Matrix4f::Multiply(lhs, rhs); }
 inline MATH_API Matrix4f operator*(const float lhs, const Matrix4f& rhs) { return Matrix4f::Multiply(rhs, lhs); }
+inline MATH_API Matrix4f operator*(const Matrix4f& lhs, const Matrix4f& rhs) { return Matrix4f::Multiply(lhs, rhs); }
+inline MATH_API Vector4f operator*(const Matrix4f& lhs, const class Vector4f& rhs) { return Matrix4f::Multiply(lhs, rhs); }
+
 #endif

@@ -97,6 +97,30 @@ Matrix2f Matrix2f::Multiply(const Matrix2f &l, const float r)
     return m;
 }
 
+// Matrix Row * Vector Column
+Vector2f Matrix2f::Multiply(const Matrix2f& l, const Vector2f& r)
+{
+    Vector2f ret;
+    
+    ret.x = l.m[E0]*r.x + l.m[E2]*r.y;
+    ret.y = l.m[E1]*r.x + l.m[E3]*r.y;
+    
+    return ret;
+}
+// Matrix Row * Matrix Column
+Matrix2f Matrix2f::Multiply(const Matrix2f& l, const Matrix2f& r)
+{
+    Matrix2f ret;
+    
+    ret.m[E0] = l.m[E0]*r.m[E0] + l.m[E2]*r.m[E1];
+    ret.m[E1] = l.m[E1]*r.m[E0] + l.m[E3]*r.m[E1];
+    
+    ret.m[E2] = l.m[E0]*r.m[E2] + l.m[E2]*r.m[E3];
+    ret.m[E3] = l.m[E1]*r.m[E2] + l.m[E3]*r.m[E3];
+    
+    return ret;
+}
+
 // Access operator
 float& Matrix2f::operator()(unsigned int row, unsigned int col)
 {

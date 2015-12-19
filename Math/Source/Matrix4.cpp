@@ -173,6 +173,46 @@ Matrix4f Matrix4f::Multiply(const Matrix4f& l, const float r)
     return m;
 }
 
+// Matrix Row * Vector Column
+Vector4f Matrix4f::Multiply(const Matrix4f& l, const Vector4f& r)
+{
+    Vector4f ret;
+    
+    ret.x = l.m[E0]*r.x + l.m[E4]*r.y + l.m[E8]*r.z + l.m[E12]*r.w;
+    ret.y = l.m[E1]*r.x + l.m[E5]*r.y + l.m[E9]*r.z + l.m[E13]*r.w;
+    ret.z = l.m[E2]*r.x + l.m[E6]*r.y + l.m[E10]*r.z + l.m[E14]*r.w;
+    ret.w = l.m[E3]*r.x + l.m[E7]*r.y + l.m[E11]*r.z + l.m[E15]*r.w;
+    
+    return ret;
+}
+// Matrix Row * Matrix Column
+Matrix4f Matrix4f::Multiply(const Matrix4f& l, const Matrix4f& r)
+{
+    Matrix4f ret;
+    
+    ret.m[E0] = l.m[E0]*r.m[E0] + l.m[E4]*r.m[E1] + l.m[E8]*r.m[E2] + l.m[E12]*r.m[E3];
+    ret.m[E1] = l.m[E1]*r.m[E0] + l.m[E5]*r.m[E1] + l.m[E9]*r.m[E2] + l.m[E13]*r.m[E3];
+    ret.m[E2] = l.m[E2]*r.m[E0] + l.m[E6]*r.m[E1] + l.m[E10]*r.m[E2] + l.m[E14]*r.m[E3];
+    ret.m[E3] = l.m[E3]*r.m[E0] + l.m[E7]*r.m[E1] + l.m[E11]*r.m[E2] + l.m[E15]*r.m[E3];
+    
+    ret.m[E4] = l.m[E0]*r.m[E4] + l.m[E4]*r.m[E5] + l.m[E8]*r.m[E6] + l.m[E12]*r.m[E7];
+    ret.m[E5] = l.m[E1]*r.m[E4] + l.m[E5]*r.m[E5] + l.m[E9]*r.m[E6] + l.m[E13]*r.m[E7];
+    ret.m[E6] = l.m[E2]*r.m[E4] + l.m[E6]*r.m[E5] + l.m[E10]*r.m[E6] + l.m[E14]*r.m[E7];
+    ret.m[E7] = l.m[E3]*r.m[E4] + l.m[E7]*r.m[E5] + l.m[E11]*r.m[E6] + l.m[E15]*r.m[E7];
+    
+    ret.m[E8] = l.m[E0]*r.m[E8] + l.m[E4]*r.m[E9] + l.m[E8]*r.m[E10] + l.m[E12]*r.m[E11];
+    ret.m[E9] = l.m[E1]*r.m[E8] + l.m[E5]*r.m[E9] + l.m[E9]*r.m[E10] + l.m[E13]*r.m[E11];
+    ret.m[E10] = l.m[E2]*r.m[E8] + l.m[E6]*r.m[E9] + l.m[E10]*r.m[E10] + l.m[E14]*r.m[E11];
+    ret.m[E11] = l.m[E3]*r.m[E8] + l.m[E7]*r.m[E9] + l.m[E11]*r.m[E10] + l.m[E15]*r.m[E11];
+    
+    ret.m[E12] = l.m[E0]*r.m[E12] + l.m[E4]*r.m[E13] + l.m[E8]*r.m[E14] + l.m[E12]*r.m[E15];
+    ret.m[E13] = l.m[E1]*r.m[E12] + l.m[E5]*r.m[E13] + l.m[E9]*r.m[E14] + l.m[E13]*r.m[E15];
+    ret.m[E14] = l.m[E2]*r.m[E12] + l.m[E6]*r.m[E13] + l.m[E10]*r.m[E14] + l.m[E14]*r.m[E15];
+    ret.m[E15] = l.m[E3]*r.m[E12] + l.m[E7]*r.m[E13] + l.m[E11]*r.m[E14] + l.m[E15]*r.m[E15];
+    
+    return ret;
+}
+
 float& Matrix4f::operator()(unsigned int row, unsigned int col)
 {
 #ifdef ROWMAJOR

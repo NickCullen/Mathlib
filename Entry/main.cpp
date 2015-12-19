@@ -6,7 +6,7 @@ int main(int argc, char** argv)
 {
     Vector2f v20 = Vector2f(10,5);
     Vector2f v21 = Vector2f(20, 10);
-    Vector2f v22 = Vector2f(40,20);
+    Vector2f v2MultiplyBy = Vector2f(2,2);
     
     Vector3f v30 = Vector3f(10,5,2);
     Vector3f v31 = Vector3f(20, 10, 4);
@@ -16,12 +16,10 @@ int main(int argc, char** argv)
     Vector4f v41 = Vector4f(20, 10, 4);
     Vector4f v42 = Vector4f(40,20,8);
     
-    Matrix2f m2 = Matrix2f::Identity();
+    Matrix2f m2 = Matrix2f(v20, v21);
     Matrix3f m3 = Matrix3f::Identity();
     Matrix4f m4 = Matrix4f::Identity();
     
-    
-    m2(0,0) = 5;
     
     Matrix2f m2a = m2 + m2;
     Matrix2f m2s = m2 - m2;
@@ -36,5 +34,10 @@ int main(int argc, char** argv)
     Matrix3f m3PreScale = 10.0f * m3;
     Matrix4f m4Scale = m4 * 5.0f;
     Matrix4f m4PreScale = 10.0f * m4;
+    
+    Matrix2f m2Multiply = m2 * m2;
+    Vector2f m2MutliplyVec = m2 * v2MultiplyBy;
+    
+    
 
 }
