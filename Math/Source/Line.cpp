@@ -16,7 +16,6 @@ Line::Line(const Vector3f& origin, const Vector3f& direction)
 	this->direction = direction;
 }
 
-
 // Destructor
 Line::~Line()
 {
