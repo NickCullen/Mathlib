@@ -1,6 +1,6 @@
 [ProjectSettings]  			
-MinCmakeVer=2.6				
-Name="Math" 		
+MinCmakeVer==2.6				
+Name=="Math" 		
 
 [ProjectIncludeDirectories]	
 /Include
@@ -9,5 +9,5 @@ Name="Math"
 /Source
 
 [Module]
-Type=shared
-Name="Math"
+Type==shared
+Name=="Math"

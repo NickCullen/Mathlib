@@ -10,6 +10,14 @@ public:
 	float y;
 	float z;
 	
+	template<class Archive>
+	void serialize(Archive& ar)
+	{
+		_SERIALIZE_VAR(x, ar);
+		_SERIALIZE_VAR(y, ar);
+		_SERIALIZE_VAR(z, ar);
+	}
+
 	// Debug Print
 	void Print();
 	

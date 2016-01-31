@@ -11,6 +11,15 @@ public:
 	float z;
 	float w;
 	
+	template<class Archive>
+	void serialize(Archive& ar)
+	{
+		_SERIALIZE_VAR(x, ar);
+		_SERIALIZE_VAR(y, ar);
+		_SERIALIZE_VAR(z, ar);
+		w = 1.0f;
+	}
+
 	// Debug Print
 	void Print();
 	
