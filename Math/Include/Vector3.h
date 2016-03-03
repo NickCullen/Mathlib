@@ -1,5 +1,4 @@
-#ifndef VECTOR3_H
-#define VECTOR3_H
+#pragma once
 
 #include "MathAPI.h"
 
@@ -107,6 +106,3 @@ inline MATH_API Vector3f operator*(const Vector3f& vec, float scalar) { return V
 // Division Operators
 inline MATH_API Vector3f operator/(float scalar, const Vector3f& vec) { return Vector3f::Divide(vec, scalar); }
 inline MATH_API Vector3f operator/(const Vector3f& vec, float scalar) { return Vector3f::Divide(vec, scalar); }
-
-
-#endif

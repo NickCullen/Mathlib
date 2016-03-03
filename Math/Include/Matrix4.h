@@ -1,5 +1,4 @@
-#ifndef MATRIX4_H
-#define MATRIX4_H
+#pragma once
 
 #include "MathAPI.h"
 
@@ -57,5 +56,3 @@ inline MATH_API Matrix4f operator*(const Matrix4f& lhs, const float rhs) { retur
 inline MATH_API Matrix4f operator*(const float lhs, const Matrix4f& rhs) { return Matrix4f::Multiply(rhs, lhs); }
 inline MATH_API Matrix4f operator*(const Matrix4f& lhs, const Matrix4f& rhs) { return Matrix4f::Multiply(lhs, rhs); }
 inline MATH_API Vector4f operator*(const Matrix4f& lhs, const class Vector4f& rhs) { return Matrix4f::Multiply(lhs, rhs); }
-
-#endif

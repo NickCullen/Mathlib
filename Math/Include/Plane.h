@@ -1,5 +1,4 @@
-#ifndef PLANE_H
-#define PLANE_H
+#pragma once
 
 #include "MathAPI.h"
 
@@ -54,5 +53,3 @@ public:
     // Returns the point using barycentric coordinates of the three points that make up the triangle
     static class Vector3f BarycentricCoordToPoint(const class Vector3f& p0, const class Vector3f& p1, const class Vector3f& p2, const class Vector2f& barCoord);
 };
-
-#endif

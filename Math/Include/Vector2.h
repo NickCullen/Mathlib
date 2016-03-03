@@ -1,5 +1,4 @@
-#ifndef VECTOR2_H
-#define VECTOR2_H
+#pragma once
 
 #include "MathAPI.h"
 
@@ -102,5 +101,3 @@ inline MATH_API Vector2f operator*(const Vector2f& vec, float scalar) { return V
 // Division Operators
 inline MATH_API Vector2f operator/(float scalar, const Vector2f& vec) { return Vector2f::Divide(vec, scalar); }
 inline MATH_API Vector2f operator/(const Vector2f& vec, float scalar) { return Vector2f::Divide(vec, scalar); }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef MATRIX3_H
-#define MATRIX3_H
+#pragma once
 
 #include "MathAPI.h"
 
@@ -58,5 +57,3 @@ inline MATH_API Matrix3f operator*(const Matrix3f& lhs, const float rhs) { retur
 inline MATH_API Matrix3f operator*(const float lhs, const Matrix3f& rhs) { return Matrix3f::Multiply(rhs, lhs); }
 inline MATH_API Matrix3f operator*(const Matrix3f& lhs, const Matrix3f& rhs) { return Matrix3f::Multiply(lhs, rhs); }
 inline MATH_API Vector3f operator*(const Matrix3f& lhs, const class Vector3f& rhs) { return Matrix3f::Multiply(lhs, rhs); }
-
-#endif

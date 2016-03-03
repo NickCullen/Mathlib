@@ -1,5 +1,4 @@
-#ifndef MATRIX2_H
-#define MATRIX2_H
+#pragma once
 
 #include "MathAPI.h"
 
@@ -57,6 +56,3 @@ inline MATH_API Matrix2f operator*(const Matrix2f& lhs, const float rhs) { retur
 inline MATH_API Matrix2f operator*(const float lhs, const Matrix2f& rhs) { return Matrix2f::Multiply(rhs, lhs); }
 inline MATH_API Matrix2f operator*(const Matrix2f& lhs, const Matrix2f& rhs) { return Matrix2f::Multiply(lhs, rhs); }
 inline MATH_API Vector2f operator*(const Matrix2f& lhs, const class Vector2f& rhs) { return Matrix2f::Multiply(lhs, rhs); }
-
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef LINE_H
-#define LINE_H
+#pragma once
 
 #include "MathAPI.h"
 
@@ -36,5 +35,3 @@ public:
     // Checks to see if the four points are collinear (in a straight line)
     static bool TestCollinear4Points(const class Vector3f& p0,const class Vector3f& p1,const class Vector3f& p2,const class Vector3f& p3);
 };
-
-#endif

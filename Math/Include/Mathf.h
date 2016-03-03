@@ -1,5 +1,4 @@
-#ifndef MATHF_H
-#define MATHF_H
+#pragma once
 
 #include "MathAPI.h"
 
@@ -29,6 +28,3 @@ public:
 	// Arctan2
 	static float Atan2(float y, float x);
 };
-
-
-#endif
