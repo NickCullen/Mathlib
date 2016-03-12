@@ -242,3 +242,15 @@ float Matrix4f::GetTrace() const
 {
     return m[E0] + m[E5] + m[E10] + m[E15];
 }
+
+void Matrix4f::Translate(const float x, const float y, const float z)
+{
+	m[E3] += x;
+	m[E7] += y;
+	m[E11] += z;
+}
+
+void Matrix4f::Translate(const Vector4f& t)
+{
+	Translate(t.x, t.y, t.z);
+}

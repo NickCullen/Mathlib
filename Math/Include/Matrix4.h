@@ -1,6 +1,7 @@
 #pragma once
 
 #include "MathAPI.h"
+#include "Vector4.h"
 
 class MATH_API Matrix4f
 {
@@ -43,6 +44,9 @@ public:
     // Returns the sum of the diagonal
     float GetTrace() const;
 
+	// Adds translation to the translation part of the matrix
+	void Translate(const float x, const float y, const float z);
+	void Translate(const Vector4f& translation);
 };
 
 // Addition Operator

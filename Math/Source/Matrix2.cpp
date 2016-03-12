@@ -12,8 +12,8 @@
  */
 #define E0 0
 #define E1 2
-#define E3 1
-#define E4 3
+#define E2 1
+#define E3 3
 #else
 /*
  | 0 2 |
