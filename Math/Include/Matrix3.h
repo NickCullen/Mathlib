@@ -37,6 +37,10 @@ public:
     static Matrix3f Multiply(const Matrix3f& lhs, const Matrix3f& rhs);
     static class Vector3f Multiply(const Matrix3f& lhs, const class Vector3f& rhs);
     
+	// Computes the determinant of the matrix
+	static float Determinant(const Matrix3f& m);
+	float Determinant();
+
     // Returns the diagonal of the matrix in vector form
     class Vector3f GetDiagonal() const;
     

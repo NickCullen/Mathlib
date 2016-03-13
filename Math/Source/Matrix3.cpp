@@ -174,6 +174,19 @@ Matrix3f& Matrix3f::operator=(const Matrix3f& rhs)
     return *this;
 }
 
+float Matrix3f::Determinant(const Matrix3f& m)
+{
+	float d1 = m.m[E0] * Matrix2f::Determinant(m.m[E4], m.m[E8], m.m[E5], m.m[E7]);	// 4*8-5*7
+	float d2 = (-m.m[E1]) * Matrix2f::Determinant(m.m[E3], m.m[E8], m.m[E5], m.m[E6]);	// 3*8-5*6
+	float d3 = m.m[E2] * Matrix2f::Determinant(m.m[E3], m.m[E7], m.m[E4], m.m[E6]);	// 3*7-4*6
+
+	return d1 + d2 + d3;
+}
+
+float Matrix3f::Determinant()
+{
+	return Matrix3f::Determinant(*this);
+}
 
 Vector3f Matrix3f::GetDiagonal() const
 {
@@ -184,3 +197,4 @@ float Matrix3f::GetTrace() const
 {
     return m[E0] + m[E4] + m[E8];
 }
+

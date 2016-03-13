@@ -38,6 +38,10 @@ public:
     static Matrix4f Multiply(const Matrix4f& lhs, const Matrix4f& rhs);
     static class Vector4f Multiply(const Matrix4f& lhs, const class Vector4f& rhs);
     
+	// Determinants of 4x4 matrices are computed as 3x3 matrices for efficency
+	static float Determinant(const Matrix4f& m);
+	float Determinant();
+
     // Returns the diagonal of the matrix in vector form
     class Vector4f GetDiagonal() const;
     

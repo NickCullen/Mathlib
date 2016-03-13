@@ -233,6 +233,20 @@ Matrix4f& Matrix4f::operator=(const Matrix4f& rhs)
     return *this;
 }
 
+float Matrix4f::Determinant(const Matrix4f& m)
+{
+	float d1 = m.m[E0] *	Matrix2f::Determinant(m.m[E5], m.m[E10], m.m[E6], m.m[E9]);// 0 -> 5*10-6*9
+	float d2 = (-m.m[E1]) * Matrix2f::Determinant(m.m[E4], m.m[E10], m.m[E6], m.m[E8]);// 1 -> 4*10-6*8
+	float d3 = m.m[E2] *	Matrix2f::Determinant(m.m[E4], m.m[E9], m.m[E5], m.m[E8]);// 2 -> 4*9-5*8
+
+	return d1 + d2 + d3;
+}
+
+float Matrix4f::Determinant()
+{
+	return Matrix4f::Determinant(*this);
+}
+
 Vector4f Matrix4f::GetDiagonal() const
 {
     return Vector4f(m[E0], m[E5], m[E10], m[E15]);

@@ -36,12 +36,18 @@ public:
     static Matrix2f Multiply(const Matrix2f& lhs, const float rhs);
     static Matrix2f Multiply(const Matrix2f& lhs, const Matrix2f& rhs);
     static class Vector2f Multiply(const Matrix2f& lhs, const class Vector2f& rhs);
-    
+	
+	// Computes the determinant (size of parralellogram of the matrix2)
+	static float Determinant(const float a, const float d, const float b, const float c);
+	static float Determinant(const Matrix2f& m);
+	float Determinant();
+
     // Returns the diagonal of the matrix in vector form
     class Vector2f GetDiagonal() const;
     
     // Returns the sum of the diagonal
     float GetTrace() const;
+
     
 };
 

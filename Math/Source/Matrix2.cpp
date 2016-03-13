@@ -147,3 +147,18 @@ float Matrix2f::GetTrace() const
 {
     return m[E0] + m[E3];
 }
+
+float Matrix2f::Determinant(const float a, const float d, const float b, const float c)
+{
+	return (a*d) - (b*c);
+}
+
+float Matrix2f::Determinant(const Matrix2f& m)
+{
+	return (m.m[E0] * m.m[E3]) - (m.m[E1] * m.m[E2]);
+}
+
+float Matrix2f::Determinant()
+{
+	return Matrix2f::Determinant(*this);
+}
