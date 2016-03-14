@@ -19,7 +19,11 @@ public:
     
     // Returns identity matrix
     static Matrix2f Identity();
-    
+	static Matrix2f Translation(const float x, const float y);
+	static Matrix2f Rotation(float degrees);
+	static Matrix2f Scale(const float x, const float y);
+	static Matrix2f Scale(const float s);
+
     // Access operator
     float& operator()(unsigned int row, unsigned int col);
     
@@ -48,7 +52,9 @@ public:
     // Returns the sum of the diagonal
     float GetTrace() const;
 
-    
+    // Affine transformations
+	void TranslateBy(const float x, const float y);
+	void TranslateBy(const class Vector2f& t);
 };
 
 // Addition Operator

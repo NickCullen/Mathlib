@@ -93,12 +93,90 @@ Matrix4f Matrix4f::Identity()
 {
     Matrix4f ret;
     
-    ret.m[0] = 1.0f; ret.m[4] = 0.0f; ret.m[8] = 0.0f; ret.m[12] = 0.0f;
-    ret.m[1] = 0.0f; ret.m[5] = 1.0f; ret.m[9] = 0.0f; ret.m[13] = 0.0f;
-    ret.m[2] = 0.0f; ret.m[6] = 0.0f; ret.m[10] = 1.0f; ret.m[14] = 0.0f;
-    ret.m[3] = 0.0f; ret.m[7] = 0.0f; ret.m[11] = 0.0f; ret.m[15] = 1.0f;
+    ret.m[E0] = 1.0f; ret.m[E4] = 0.0f; ret.m[E8] = 0.0f;  ret.m[E12] = 0.0f;
+    ret.m[E1] = 0.0f; ret.m[E5] = 1.0f; ret.m[E9] = 0.0f;  ret.m[E13] = 0.0f;
+    ret.m[E2] = 0.0f; ret.m[E6] = 0.0f; ret.m[E10] = 1.0f; ret.m[E14] = 0.0f;
+    ret.m[E3] = 0.0f; ret.m[E7] = 0.0f; ret.m[E11] = 0.0f; ret.m[E15] = 1.0f;
     
     return ret;
+}
+
+Matrix4f Matrix4f::Translation(const float x, const float y, const float z)
+{
+	Matrix4f ret;
+
+	ret.m[E0] = 1.0f; ret.m[E4] = 0.0f; ret.m[E8] = 0.0f;  ret.m[E12] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E5] = 1.0f; ret.m[E9] = 0.0f;  ret.m[E13] = 0.0f;
+	ret.m[E2] = 0.0f; ret.m[E6] = 0.0f; ret.m[E10] = 1.0f; ret.m[E14] = 0.0f;
+	ret.m[E3] = x;    ret.m[E7] = y;    ret.m[E11] = z;    ret.m[E15] = 1.0f;
+
+	return ret;
+}
+
+Matrix4f Matrix4f::RotationX(float d)
+{
+	Matrix4f ret;
+
+	d = DEG2RAD(d);
+
+	ret.m[E0] = 1.0f; ret.m[E4] = 0.0f;			  ret.m[E8] = 0.0f;			  ret.m[E12] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E5] = Mathf::Cos(d);  ret.m[E9] = Mathf::Sin(d);  ret.m[E13] = 0.0f;
+	ret.m[E2] = 0.0f; ret.m[E6] = -Mathf::Sin(d); ret.m[E10] = Mathf::Cos(d); ret.m[E14] = 0.0f;
+	ret.m[E3] = 0.0f; ret.m[E7] = 0.0f;			  ret.m[E11] = 0.0f;		  ret.m[E15] = 1.0f;
+
+	return ret;
+}
+
+Matrix4f Matrix4f::RotationY(float d)
+{
+	Matrix4f ret;
+
+	d = DEG2RAD(d);
+
+	ret.m[E0] = Mathf::Cos(d);	ret.m[E4] = 0.0f; ret.m[E8] = -Mathf::Sin(d);	ret.m[E12] = 0.0f;
+	ret.m[E1] = 0.0f;			ret.m[E5] = 1.0f; ret.m[E9] = 0.0f;				ret.m[E13] = 0.0f;
+	ret.m[E2] = Mathf::Sin(d);	ret.m[E6] = 0.0f; ret.m[E10] = Mathf::Cos(d);	ret.m[E14] = 0.0f;
+	ret.m[E3] = 0.0f;			ret.m[E7] = 0.0f; ret.m[E11] = 0.0f;			ret.m[E15] = 1.0f;
+
+	return ret;
+}
+
+Matrix4f Matrix4f::RotationZ(float d)
+{
+	Matrix4f ret;
+
+	d = DEG2RAD(d);
+
+	ret.m[E0] = Mathf::Cos(d);  ret.m[E4] = Mathf::Sin(d);	ret.m[E8] = 0.0f;  ret.m[E12] = 0.0f;
+	ret.m[E1] = -Mathf::Sin(d); ret.m[E5] = Mathf::Cos(d);	ret.m[E9] = 0.0f;  ret.m[E13] = 0.0f;
+	ret.m[E2] = 0.0f;			ret.m[E6] = 0.0f;			ret.m[E10] = 1.0f; ret.m[E14] = 0.0f;
+	ret.m[E3] = 0.0f;			ret.m[E7] = 0.0f;			ret.m[E11] = 0.0f; ret.m[E15] = 1.0f;
+
+	return ret;
+}
+
+Matrix4f Matrix4f::Scale(const float x, const float y, const float z)
+{
+	Matrix4f ret;
+
+	ret.m[E0] = x;	  ret.m[E4] = 0.0f; ret.m[E8] = 0.0f;  ret.m[E12] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E5] = y;	ret.m[E9] = 0.0f;  ret.m[E13] = 0.0f;
+	ret.m[E2] = 0.0f; ret.m[E6] = 0.0f; ret.m[E10] = z;	   ret.m[E14] = 0.0f;
+	ret.m[E3] = 0.0f; ret.m[E7] = 0.0f; ret.m[E11] = 0.0f; ret.m[E15] = 1.0f;
+
+	return ret;
+}
+
+Matrix4f Matrix4f::Scale(const float s)
+{
+	Matrix4f ret;
+
+	ret.m[E0] = s;	  ret.m[E4] = 0.0f; ret.m[E8] = 0.0f;  ret.m[E12] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E5] = s;	ret.m[E9] = 0.0f;  ret.m[E13] = 0.0f;
+	ret.m[E2] = 0.0f; ret.m[E6] = 0.0f; ret.m[E10] = s;	   ret.m[E14] = 0.0f;
+	ret.m[E3] = 0.0f; ret.m[E7] = 0.0f; ret.m[E11] = 0.0f; ret.m[E15] = 1.0f;
+
+	return ret;
 }
 
 Matrix4f Matrix4f::Add(const Matrix4f& l, const Matrix4f& r)
@@ -257,14 +335,19 @@ float Matrix4f::GetTrace() const
     return m[E0] + m[E5] + m[E10] + m[E15];
 }
 
-void Matrix4f::Translate(const float x, const float y, const float z)
+void Matrix4f::TranslateBy(const float x, const float y, const float z)
 {
 	m[E3] += x;
 	m[E7] += y;
 	m[E11] += z;
 }
 
-void Matrix4f::Translate(const Vector4f& t)
+void Matrix4f::TranslateBy(const Vector3f& t)
 {
-	Translate(t.x, t.y, t.z);
+	TranslateBy(t.x, t.y, t.z);
+}
+
+void Matrix4f::TranslateBy(const Vector4f& t)
+{
+	TranslateBy(t.x, t.y, t.z);
 }

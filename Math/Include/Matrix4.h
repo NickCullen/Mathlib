@@ -20,7 +20,13 @@ public:
     
     // Returns identity matrix
     static Matrix4f Identity();
-    
+	static Matrix4f Translation(const float x, const float y, const float z);
+	static Matrix4f RotationX(float degrees);
+	static Matrix4f RotationY(float degrees);
+	static Matrix4f RotationZ(float degrees);
+	static Matrix4f Scale(const float x, const float y, const float z);
+	static Matrix4f Scale(const float s);
+
     // Access operator
     float& operator()(unsigned int row, unsigned int col);
     
@@ -48,9 +54,10 @@ public:
     // Returns the sum of the diagonal
     float GetTrace() const;
 
-	// Adds translation to the translation part of the matrix
-	void Translate(const float x, const float y, const float z);
-	void Translate(const Vector4f& translation);
+	// Affine transformations
+	void TranslateBy(const float x, const float y, const float z);
+	void TranslateBy(const class Vector3f& t);
+	void TranslateBy(const class Vector4f& t);
 };
 
 // Addition Operator

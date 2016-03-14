@@ -19,7 +19,14 @@ public:
     
     // Returns identity matrix
     static Matrix3f Identity();
-    
+	static Matrix3f Translation(const float x, const float y, const float z);
+	static Matrix3f RotationX(float degrees);
+	static Matrix3f RotationY(float degrees);
+	static Matrix3f RotationZ(float degrees);
+	static Matrix3f Scale(const float x, const float y, const float z);
+	static Matrix3f Scale(const float s);
+
+
     // Access operator
     float& operator()(unsigned int row, unsigned int col);
     
@@ -47,7 +54,9 @@ public:
     // Returns the sum of the diagonal
     float GetTrace() const;
     
-    
+	// Affine transformations
+	void TranslateBy(const float x, const float y, const float z);
+	void TranslateBy(const class Vector3f& t);
 };
 
 // Addition Operator

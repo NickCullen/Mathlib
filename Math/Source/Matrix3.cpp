@@ -67,11 +67,83 @@ Matrix3f Matrix3f::Identity()
 {
     Matrix3f ret;
     
-    ret.m[0] = 1.0f; ret.m[3] = 0.0f; ret.m[6] = 0.0f;
-    ret.m[1] = 0.0f; ret.m[4] = 1.0f; ret.m[7] = 0.0f;
-    ret.m[2] = 0.0f; ret.m[5] = 0.0f; ret.m[8] = 1.0f;
+    ret.m[E0] = 1.0f; ret.m[E3] = 0.0f; ret.m[E6] = 0.0f;
+    ret.m[E1] = 0.0f; ret.m[E4] = 1.0f; ret.m[E7] = 0.0f;
+    ret.m[E2] = 0.0f; ret.m[E5] = 0.0f; ret.m[E8] = 1.0f;
     
     return ret;
+}
+
+Matrix3f Matrix3f::Translation(const float x, const float y, const float z)
+{
+	Matrix3f ret;
+
+	ret.m[E0] = 1.0f; ret.m[E3] = 0.0f; ret.m[E6] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E4] = 1.0f; ret.m[E7] = 0.0f;
+	ret.m[E2] = x;	  ret.m[E5] = y;	ret.m[E8] = z;
+
+	return ret;
+}
+
+Matrix3f Matrix3f::RotationX(float d)
+{
+	Matrix3f ret;
+
+	d = DEG2RAD(d);
+
+	ret.m[E0] = 1.0f; ret.m[E3] = 0.0f;				ret.m[E6] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E4] = Mathf::Cos(d);	ret.m[E7] = Mathf::Sin(d);
+	ret.m[E2] = 0.0f; ret.m[E5] = -Mathf::Sin(d);	ret.m[E8] = Mathf::Cos(d);
+
+	return ret;
+}
+
+Matrix3f Matrix3f::RotationY(float d)
+{
+	Matrix3f ret;
+
+	d = DEG2RAD(d);
+
+	ret.m[E0] = Mathf::Cos(d);  ret.m[E3] = 0.0f; ret.m[E6] = -Mathf::Sin(d);
+	ret.m[E1] = 0.0f;			ret.m[E4] = 1.0f; ret.m[E7] = 0.0f;
+	ret.m[E2] = Mathf::Sin(d);  ret.m[E5] = 0.0f; ret.m[E8] = Mathf::Cos(d);
+
+	return ret;
+}
+
+Matrix3f Matrix3f::RotationZ(float d)
+{
+	Matrix3f ret;
+
+	d = DEG2RAD(d);
+
+	ret.m[E0] = Mathf::Cos(d);	ret.m[E3] = Mathf::Sin(d);  ret.m[E6] = 0.0f;
+	ret.m[E1] = -Mathf::Sin(d); ret.m[E4] = Mathf::Cos(d);  ret.m[E7] = 0.0f;
+	ret.m[E2] = 0.0f;			ret.m[E5] = 0.0f;			ret.m[E8] = 1.0f;
+
+	return ret;
+}
+
+Matrix3f Matrix3f::Scale(const float x, const float y, const float z)
+{
+	Matrix3f ret;
+
+	ret.m[E0] = x;	  ret.m[E3] = 0.0f; ret.m[E6] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E4] = y;	ret.m[E7] = 0.0f;
+	ret.m[E2] = 0.0f; ret.m[E5] = 0.0f; ret.m[E8] = z;
+
+	return ret;
+}
+
+Matrix3f Matrix3f::Scale(const float s)
+{
+	Matrix3f ret;
+
+	ret.m[E0] = s;	  ret.m[E3] = 0.0f; ret.m[E6] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E4] = s;	ret.m[E7] = 0.0f;
+	ret.m[E2] = 0.0f; ret.m[E5] = 0.0f; ret.m[E8] = s;
+
+	return ret;
 }
 
 Matrix3f Matrix3f::Add(const Matrix3f& l, const Matrix3f& r)
@@ -198,3 +270,14 @@ float Matrix3f::GetTrace() const
     return m[E0] + m[E4] + m[E8];
 }
 
+void Matrix3f::TranslateBy(const float x, const float y, const float z)
+{
+	m[E2] += x;
+	m[E5] += y;
+	m[E8] += z;
+}
+
+void Matrix3f::TranslateBy(const Vector3f& t)
+{
+	TranslateBy(t.x, t.y, t.z);
+}

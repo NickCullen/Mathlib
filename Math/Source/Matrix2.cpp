@@ -55,10 +55,55 @@ Matrix2f Matrix2f::Identity()
 {
     Matrix2f ret;
     
-    ret.m[0] = 1.0f; ret.m[2] = 0.0f;
-    ret.m[1] = 0.0f; ret.m[3] = 1.0f;
+    ret.m[E0] = 1.0f; ret.m[E2] = 0.0f;
+    ret.m[E1] = 0.0f; ret.m[E3] = 1.0f;
     
     return ret;
+}
+
+Matrix2f Matrix2f::Translation(const float x, const float y)
+{
+	Matrix2f m;
+
+	m.m[E0] = 1.0f;
+	m.m[E1] = x;
+	m.m[E2] = 0.0f;
+	m.m[E3] = y;
+
+	return m;
+}
+
+Matrix2f Matrix2f::Rotation(float d)
+{
+	Matrix2f m;
+
+	d = DEG2RAD(d);
+
+	m.m[E0] = Mathf::Cos(d);  m.m[E2] = Mathf::Sin(d);
+	m.m[E1] = -Mathf::Sin(d); m.m[E3] = Mathf::Cos(d);
+	
+	return m;
+
+}
+
+Matrix2f Matrix2f::Scale(const float x, const float y)
+{
+	Matrix2f ret;
+
+	ret.m[E0] = x;	  ret.m[E2] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E3] = y;
+
+	return ret;
+}
+
+Matrix2f Matrix2f::Scale(const float s)
+{
+	Matrix2f ret;
+
+	ret.m[E0] = s;	  ret.m[E2] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E3] = s;
+
+	return ret;
 }
 
 Matrix2f Matrix2f::Add(const Matrix2f& l, const Matrix2f& r)
@@ -161,4 +206,16 @@ float Matrix2f::Determinant(const Matrix2f& m)
 float Matrix2f::Determinant()
 {
 	return Matrix2f::Determinant(*this);
+}
+
+// Affine transformations
+void Matrix2f::TranslateBy(const float x, const float y)
+{
+	m[E1] += x;
+	m[E3] += y;
+}
+
+void Matrix2f::TranslateBy(const Vector2f& t)
+{
+	TranslateBy(t.x, t.y);
 }
