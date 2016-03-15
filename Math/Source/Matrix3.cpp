@@ -146,6 +146,39 @@ Matrix3f Matrix3f::Scale(const float s)
 	return ret;
 }
 
+Matrix3f Matrix3f::ShearX(const float y, const float z)
+{
+	Matrix3f ret;
+
+	ret.m[E0] = 1.0f; ret.m[E3] = y;	ret.m[E6] = z;
+	ret.m[E1] = 0.0f; ret.m[E4] = 1.0f; ret.m[E7] = 0.0f;
+	ret.m[E2] = 0.0f; ret.m[E5] = 0.0f; ret.m[E8] = 1.0f;
+
+	return ret;
+}
+
+Matrix3f Matrix3f::ShearY(const float x, const float z)
+{
+	Matrix3f ret;
+
+	ret.m[E0] = 1.0f; ret.m[E3] = 0.0f; ret.m[E6] = 0.0f;
+	ret.m[E1] = x;	  ret.m[E4] = 1.0f; ret.m[E7] = z;
+	ret.m[E2] = 0.0f; ret.m[E5] = 0.0f; ret.m[E8] = 1.0f;
+
+	return ret;
+}
+
+Matrix3f Matrix3f::ShearZ(const float x, const float y)
+{
+	Matrix3f ret;
+
+	ret.m[E0] = 1.0f; ret.m[E3] = 0.0f; ret.m[E6] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E4] = 1.0f; ret.m[E7] = 0.0f;
+	ret.m[E2] = x;	  ret.m[E5] = y;	ret.m[E8] = 1.0f;
+
+	return ret;
+}
+
 Matrix3f Matrix3f::Add(const Matrix3f& l, const Matrix3f& r)
 {
     Matrix3f m;

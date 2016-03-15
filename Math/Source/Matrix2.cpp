@@ -106,6 +106,26 @@ Matrix2f Matrix2f::Scale(const float s)
 	return ret;
 }
 
+Matrix2f Matrix2f::ShearX(const float y)
+{
+	Matrix2f ret;
+
+	ret.m[E0] = 1.0f; ret.m[E2] = y;
+	ret.m[E1] = 0.0f; ret.m[E3] = 1.0f;
+
+	return ret;
+}
+
+Matrix2f Matrix2f::ShearY(const float x)
+{
+	Matrix2f ret;
+
+	ret.m[E0] = 1.0f; ret.m[E2] = 0.0f;
+	ret.m[E1] = x;	  ret.m[E3] = 1.0f;
+
+	return ret;
+}
+
 Matrix2f Matrix2f::Add(const Matrix2f& l, const Matrix2f& r)
 {
     Matrix2f m;

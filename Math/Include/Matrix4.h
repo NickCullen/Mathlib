@@ -26,6 +26,9 @@ public:
 	static Matrix4f RotationZ(float degrees);
 	static Matrix4f Scale(const float x, const float y, const float z);
 	static Matrix4f Scale(const float s);
+	static Matrix4f ShearX(const float y, const float z);
+	static Matrix4f ShearY(const float x, const float z);
+	static Matrix4f ShearZ(const float x, const float y);
 
     // Access operator
     float& operator()(unsigned int row, unsigned int col);

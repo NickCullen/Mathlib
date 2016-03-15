@@ -179,6 +179,42 @@ Matrix4f Matrix4f::Scale(const float s)
 	return ret;
 }
 
+Matrix4f Matrix4f::ShearX(const float y, const float z)
+{
+	Matrix4f ret;
+
+	ret.m[E0] = 1.0f; ret.m[E4] = y;	ret.m[E8] = z;	   ret.m[E12] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E5] = 1.0f; ret.m[E9] = 0.0f;  ret.m[E13] = 0.0f;
+	ret.m[E2] = 0.0f; ret.m[E6] = 0.0f; ret.m[E10] = 1.0f; ret.m[E14] = 0.0f;
+	ret.m[E3] = 0.0f; ret.m[E7] = 0.0f; ret.m[E11] = 0.0f; ret.m[E15] = 1.0f;
+
+	return ret;
+}
+
+Matrix4f Matrix4f::ShearY(const float x, const float z)
+{
+	Matrix4f ret;
+
+	ret.m[E0] = 1.0f; ret.m[E4] = 0.0f; ret.m[E8] = 0.0f;  ret.m[E12] = 0.0f;
+	ret.m[E1] = x;	  ret.m[E5] = 1.0f; ret.m[E9] = z;	   ret.m[E13] = 0.0f;
+	ret.m[E2] = 0.0f; ret.m[E6] = 0.0f; ret.m[E10] = 1.0f; ret.m[E14] = 0.0f;
+	ret.m[E3] = 0.0f; ret.m[E7] = 0.0f; ret.m[E11] = 0.0f; ret.m[E15] = 1.0f;
+
+	return ret;
+}
+
+Matrix4f Matrix4f::ShearZ(const float x, const float y)
+{
+	Matrix4f ret;
+
+	ret.m[E0] = 1.0f; ret.m[E4] = 0.0f; ret.m[E8] = 0.0f;  ret.m[E12] = 0.0f;
+	ret.m[E1] = 0.0f; ret.m[E5] = 1.0f; ret.m[E9] = 0.0f;  ret.m[E13] = 0.0f;
+	ret.m[E2] = x;	  ret.m[E6] = y;	ret.m[E10] = 1.0f; ret.m[E14] = 0.0f;
+	ret.m[E3] = 0.0f; ret.m[E7] = 0.0f; ret.m[E11] = 0.0f; ret.m[E15] = 1.0f;
+
+	return ret;
+}
+
 Matrix4f Matrix4f::Add(const Matrix4f& l, const Matrix4f& r)
 {
     Matrix4f m;

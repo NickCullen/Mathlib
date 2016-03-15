@@ -23,6 +23,8 @@ public:
 	static Matrix2f Rotation(float degrees);
 	static Matrix2f Scale(const float x, const float y);
 	static Matrix2f Scale(const float s);
+	static Matrix2f ShearX(const float y);
+	static Matrix2f ShearY(const float x);
 
     // Access operator
     float& operator()(unsigned int row, unsigned int col);
