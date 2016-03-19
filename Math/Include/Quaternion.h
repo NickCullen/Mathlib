@@ -1,6 +1,8 @@
 #pragma once
 
-class Quaternion
+#include "MathLib.h"
+
+class MATH_API Quaternion
 {
 public:
 	float x, y, z, w;
@@ -11,8 +13,8 @@ public:
 	inline Quaternion(float _w, float _x, float _y, float _z)
 		:x(_x), y(_y), z(_z), w(_w)
 	{}
-	//Quaternion(const class Vector3f& vec);
-	//Quaternion(const class Vector4f& vec);
+	Quaternion(const class Vector3f& vec);
+	Quaternion(const class Vector4f& vec);
 
 	// Destructors
 	inline ~Quaternion() {};
@@ -30,8 +32,21 @@ public:
 	static Quaternion Subtract(const Quaternion& q1, const Quaternion& q2);
 	Quaternion operator-(const Quaternion& other);
 
+	// Length
+	static float Length(const Quaternion& q);
+	float Length();
+
+	// Normalize
+	static Quaternion& Normalize(Quaternion& q);
+	Quaternion& Normalize();	// Normalizes this vector and returns it
+	Quaternion Normalized();	// Creates copy, normalizes it and returns it
+
+	// Dot product
+	static float Dot(const Quaternion& q1, const Quaternion& q2);
+	float Dot(const Quaternion& other);
+
 };
 
 // Scalar multiplication
-Quaternion operator*(const Quaternion& q1, const float scalar) { return Quaternion::Multiply(q1, scalar); }
-Quaternion operator*(const float scalar, const Quaternion& q1) { return Quaternion::Multiply(q1, scalar); }
+inline MATH_API Quaternion operator*(const Quaternion& q1, const float scalar) { return Quaternion::Multiply(q1, scalar); }
+inline MATH_API Quaternion operator*(const float scalar, const Quaternion& q1) { return Quaternion::Multiply(q1, scalar); }

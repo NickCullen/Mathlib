@@ -3,8 +3,8 @@
 #include "MathAPI.h"
 
 // Macros
-#define DEG2RAD(d) d * 0.0174532925199444		// PI / 180 
-#define RAD2DEG(r) r * 57.29577951307855		// 180 / PI
+#define DEG2RAD(d) d * 0.0174532925199444f		// PI / 180 
+#define RAD2DEG(r) r * 57.29577951307855f		// 180 / PI
 
 class MATH_API Mathf
 {
