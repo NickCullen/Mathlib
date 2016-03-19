@@ -11,7 +11,8 @@ public:
     // Ctor
     Matrix3f();
     Matrix3f(const class Vector3f&x, const class Vector3f&y, const class Vector3f&z);
-    
+	Matrix3f(const class Quaternion& q);
+
     ~Matrix3f();
     
     // Prints the matrix
@@ -23,6 +24,7 @@ public:
 	static Matrix3f RotationX(float degrees);
 	static Matrix3f RotationY(float degrees);
 	static Matrix3f RotationZ(float degrees);
+	static Matrix3f Rotation(const class Quaternion& q);
 	static Matrix3f Scale(const float x, const float y, const float z);
 	static Matrix3f Scale(const float s);
 	static Matrix3f ShearX(const float y, const float z);
@@ -59,6 +61,9 @@ public:
 	// Affine transformations
 	void TranslateBy(const float x, const float y, const float z);
 	void TranslateBy(const class Vector3f& t);
+
+	// Loads matrix from quaternion
+	Matrix3f& FromQuaternion(const class Quaternion& quat);
 };
 
 // Addition Operator

@@ -12,7 +12,8 @@ public:
     Matrix4f();
     Matrix4f(const class Vector4f& x,const class Vector4f& y,const class Vector4f& z);
     Matrix4f(const class Vector4f& x,const class Vector4f& y,const class Vector4f& z, const class Vector4f& w);
-    
+	Matrix4f(const class Quaternion& q);
+
     ~Matrix4f();
     
     // Prints the matrix
@@ -24,6 +25,7 @@ public:
 	static Matrix4f RotationX(float degrees);
 	static Matrix4f RotationY(float degrees);
 	static Matrix4f RotationZ(float degrees);
+	static Matrix4f Rotation(const class Quaternion& q);
 	static Matrix4f Scale(const float x, const float y, const float z);
 	static Matrix4f Scale(const float s);
 	static Matrix4f ShearX(const float y, const float z);
@@ -61,6 +63,9 @@ public:
 	void TranslateBy(const float x, const float y, const float z);
 	void TranslateBy(const class Vector3f& t);
 	void TranslateBy(const class Vector4f& t);
+
+	// Loads matrix from quaternion
+	Matrix4f& FromQuaternion(const class Quaternion& quat);
 };
 
 // Addition Operator

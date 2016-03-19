@@ -87,3 +87,28 @@ float Quaternion::Dot(const Quaternion& other)
 {
 	return Quaternion::Dot(*this, other);
 }
+
+Quaternion Quaternion::EulerAngles(const float x, const float y, const float z)
+{
+	float C1 = Mathf::Cos(x* 0.5f);
+	float C2 = Mathf::Cos(y* 0.5f);
+	float C3 = Mathf::Cos(z* 0.5f);
+
+	float S1 = Mathf::Sin(x* 0.5f);
+	float S2 = Mathf::Sin(y* 0.5f);
+	float S3 = Mathf::Sin(z* 0.5f);
+
+	Quaternion q;
+
+	q.w = (C1 * C2 * C3) - (S1 * S2 * S3);
+	q.x = (S1 * C2 * C3) + (C1 * S2 * S3);
+	q.y = (C1 * S2 * C3) - (S1 * C2 * S3);
+	q.z = (C1 * C2 * S3) + (S1 * S2 * C3);
+
+	return q;
+}
+
+Quaternion Quaternion::EulerAngles(const class Vector3f& angles)
+{
+	return Quaternion::EulerAngles(angles.x, angles.y, angles.z);
+}

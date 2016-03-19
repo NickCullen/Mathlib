@@ -51,6 +51,11 @@ Matrix3f::Matrix3f(const Vector3f&x, const Vector3f&y, const Vector3f&z)
     m[E2] = x.z; m[E5] = y.z; m[E8] = z.z;
 }
 
+Matrix3f::Matrix3f(const Quaternion& q)
+{
+	FromQuaternion(q);
+}
+
 Matrix3f::~Matrix3f()
 {
     
@@ -122,6 +127,39 @@ Matrix3f Matrix3f::RotationZ(float d)
 	ret.m[E2] = 0.0f;			ret.m[E5] = 0.0f;			ret.m[E8] = 1.0f;
 
 	return ret;
+}
+
+Matrix3f Matrix3f::Rotation(const Quaternion& q)
+{
+	Matrix3f m;
+	return m.FromQuaternion(q);
+}
+
+Matrix3f& Matrix3f::FromQuaternion(const Quaternion& q)
+{
+	float s, xs, ys, zs, wx, wy, wz, xx, xy, xz, yy, yz, zz;
+
+	// if Q is normalized, s = 2.0f
+	s = 2.0f / (q.x*q.x + q.y*q.y + q.z*q.z + q.w*q.w);
+
+	xs = s*q.x;		ys = s*q.y;		zs = s*q.z;
+	wx = q.w*xs;	wy = q.w*ys;	wz = q.w*zs;
+	xx = q.x*xs;	xy = q.x*ys;	xz = q.x*zs;
+	yy = q.y*ys;	yz = q.y*zs;	zz = q.z*zs;
+
+	m[E0] = 1.0f - (yy + zz);
+	m[E3] = xy - wz;
+	m[E6] = xz + wy;
+
+	m[E1] = xy + wz;
+	m[E4] = 1.0f - (xx + zz);
+	m[E7] = yz - wx;
+
+	m[E2] = xz - wy;
+	m[E5] = yz + wx;
+	m[E8] = 1.0f - (xx + yy);
+
+	return *this;
 }
 
 Matrix3f Matrix3f::Scale(const float x, const float y, const float z)

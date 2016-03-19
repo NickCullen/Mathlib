@@ -45,6 +45,9 @@ public:
 	static float Dot(const Quaternion& q1, const Quaternion& q2);
 	float Dot(const Quaternion& other);
 
+	// Create a quaternion from euler angles
+	static Quaternion EulerAngles(const float x, const float y, const float z);
+	static Quaternion EulerAngles(const class Vector3f& angles);
 };
 
 // Scalar multiplication

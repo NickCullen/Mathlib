@@ -75,6 +75,12 @@ Matrix4f::Matrix4f(const Vector4f& x,const Vector4f& y,const Vector4f& z, const 
     m[E3] = x.w; m[E7] = y.w; m[E11] = z.w; m[E15] = w.w;
 }
 
+Matrix4f::Matrix4f(const Quaternion& q)
+{
+	FromQuaternion(q);
+}
+
+
 Matrix4f::~Matrix4f()
 {
     
@@ -153,6 +159,12 @@ Matrix4f Matrix4f::RotationZ(float d)
 	ret.m[E3] = 0.0f;			ret.m[E7] = 0.0f;			ret.m[E11] = 0.0f; ret.m[E15] = 1.0f;
 
 	return ret;
+}
+
+Matrix4f Matrix4f::Rotation(const Quaternion& q)
+{
+	Matrix4f ret;
+	return ret.FromQuaternion(q);
 }
 
 Matrix4f Matrix4f::Scale(const float x, const float y, const float z)
@@ -386,4 +398,35 @@ void Matrix4f::TranslateBy(const Vector3f& t)
 void Matrix4f::TranslateBy(const Vector4f& t)
 {
 	TranslateBy(t.x, t.y, t.z);
+}
+
+Matrix4f& Matrix4f::FromQuaternion(const Quaternion& q)
+{
+	float s, xs, ys, zs, wx, wy, wz, xx, xy, xz, yy, yz, zz;
+
+	// if Q is normalized, s = 2.0f
+	s = 2.0f / (q.x*q.x + q.y*q.y + q.z*q.z + q.w*q.w);
+
+	xs = s*q.x;		ys = s*q.y;		zs = s*q.z;
+	wx = q.w*xs;	wy = q.w*ys;	wz = q.w*zs;
+	xx = q.x*xs;	xy = q.x*ys;	xz = q.x*zs;
+	yy = q.y*ys;	yz = q.y*zs;	zz = q.z*zs;
+
+	m[E0] = 1.0f - (yy + zz);
+	m[E4] = xy - wz;
+	m[E8] = xz + wy;
+
+	m[E1] = xy + wz;
+	m[E5] = 1.0f - (xx + zz);
+	m[E9] = yz - wx;
+
+	m[E2] = xz - wy;
+	m[E6] = yz + wx;
+	m[E10] = 1.0f - (xx + yy);
+
+	// Default the rest
+	m[E3] = m[E7] = m[E11] = m[E12] = m[E13] = m[E14] = 0.0f;
+	m[E15] = 1.0f;
+
+	return *this;
 }
