@@ -1,4 +1,4 @@
-#include "MathLib.h"
+#include "../Include/MathLib.h"
 
 Quaternion::Quaternion(const Vector3f& v)
 	:x(v.x), y(v.y), z(v.z), w(1)

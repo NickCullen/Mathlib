@@ -1,4 +1,4 @@
-#include "MathLib.h"
+#include "../Include/MathLib.h"
 
 // Constructors
 Line::Line()
